@@ -11,8 +11,8 @@
 		7EF11BD11BB3939000A551CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EF11BCF1BB3939000A551CC /* Main.storyboard */; };
 		7EF11BD31BB3939000A551CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF11BD21BB3939000A551CC /* Assets.xcassets */; };
 		7EF11BD61BB3939000A551CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EF11BD41BB3939000A551CC /* LaunchScreen.storyboard */; };
-		7EF11BE21BB393EE00A551CC /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF11BE11BB393EE00A551CC /* MainTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		7EF11BE41BB3947900A551CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF11BE31BB3947900A551CC /* DetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7EF11BE21BB393EE00A551CC /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF11BE11BB393EE00A551CC /* MainTableViewController.swift */; };
+		7EF11BE41BB3947900A551CC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF11BE31BB3947900A551CC /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,11 +125,12 @@
 		7EF11BC01BB3939000A551CC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Sweefties;
 				TargetAttributes = {
 					7EF11BC71BB3939000A551CC = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -210,8 +211,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -255,8 +258,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -275,6 +280,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -288,6 +294,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sweefties.iOS9-NewAPI-3DTouch-PeekAndPop-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -299,6 +306,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sweefties.iOS9-NewAPI-3DTouch-PeekAndPop-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -321,6 +329,7 @@
 				7EF11BDC1BB3939000A551CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

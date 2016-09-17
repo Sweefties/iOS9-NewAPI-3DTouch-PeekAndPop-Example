@@ -26,21 +26,21 @@ class MainTableViewController: UITableViewController {
         // Set datas
         populateData()
         // Force touch feature
-        if traitCollection.forceTouchCapability == UIForceTouchCapability.Available {
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
             // register UIViewControllerPreviewingDelegate to enable Peek & Pop
-            registerForPreviewingWithDelegate(self, sourceView: view)
+            registerForPreviewing(with: self, sourceView: view)
         }else {
             // 3DTouch Unavailable : present alertController
-            alertController = UIAlertController(title: "3DTouch Unavailable", message: "Unsupported device.", preferredStyle: .Alert)
+            alertController = UIAlertController(title: "3DTouch Unavailable", message: "Unsupported device.", preferredStyle: .alert)
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if let alertController = alertController {
-            alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            presentViewController(alertController, animated: true, completion: nil)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
             
             self.alertController = nil
         }
@@ -57,18 +57,18 @@ typealias MainTableViewDataSource = MainTableViewController
 extension MainTableViewDataSource {
     
     /// Number of sections
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     /// Number of rows
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataSetted.count ?? 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataSetted.count 
     }
     /// Cell for row
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
         // Configure the cell...
-        let row = DataSetted[indexPath.row]
+        let row = DataSetted[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = row.question
         cell.detailTextLabel?.text = row.annotation
         return cell
@@ -81,8 +81,8 @@ typealias MainTableViewDelegate = MainTableViewController
 extension MainTableViewDelegate {
     
     /// Select Row at IndexPath
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        performSegueWithIdentifier(segueID, sender: self)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: segueID, sender: self)
     }
 }
 
@@ -92,10 +92,10 @@ typealias MainNavigation = MainTableViewController
 extension MainNavigation {
     
     /// Segue Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == segueID, let indexPath = tableView.indexPathForSelectedRow {
-            let previewItem = DataSetted[indexPath.row]
-            let detailViewController = segue.destinationViewController as! DetailsViewController
+            let previewItem = DataSetted[(indexPath as NSIndexPath).row]
+            let detailViewController = segue.destination as! DetailsViewController
             
             detailViewController.detailTitle = previewItem.title
             detailViewController.detailAnnotation = previewItem.annotation
@@ -111,17 +111,17 @@ typealias PeekAndPopPreview = MainTableViewController
 extension PeekAndPopPreview : UIViewControllerPreviewingDelegate {
     
     /// Called when the user has pressed a source view in a previewing view controller (Peek).
-    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         
         // Get indexPath for location (CGPoint) + cell (for sourceRect)
-        guard let indexPath = tableView.indexPathForRowAtPoint(location),
-            cell = tableView.cellForRowAtIndexPath(indexPath) else { return nil }
+        guard let indexPath = tableView.indexPathForRow(at: location),
+            let cell = tableView.cellForRow(at: indexPath) else { return nil }
         
         // Instantiate VC with Identifier (Storyboard ID)
-        guard let previewViewController = storyboard?.instantiateViewControllerWithIdentifier(storyboardPreviewID) as? DetailsViewController else { return nil }
+        guard let previewViewController = storyboard?.instantiateViewController(withIdentifier: storyboardPreviewID) as? DetailsViewController else { return nil }
         
         // Pass datas to the previewing context
-        let previewItem = DataSetted[indexPath.row]
+        let previewItem = DataSetted[(indexPath as NSIndexPath).row]
         
         previewViewController.detailTitle = previewItem.title
         previewViewController.detailAnnotation = previewItem.annotation
@@ -137,9 +137,9 @@ extension PeekAndPopPreview : UIViewControllerPreviewingDelegate {
         return previewViewController
     }
     /// Called to let you prepare the presentation of a commit (Pop).
-    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         // Presents viewControllerToCommit in a primary context
-        showViewController(viewControllerToCommit, sender: self)
+        show(viewControllerToCommit, sender: self)
     }
 }
 

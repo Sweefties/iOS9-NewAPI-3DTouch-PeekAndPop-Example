@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/build-pass-brightgreen.svg?style=flat-square)
 ![](https://img.shields.io/badge/platform-iOS9+-ff69b4.svg?style=flat-square)
-![](https://img.shields.io/badge/Require-XCode7-lightgrey.svg?style=flat-square)
+![](https://img.shields.io/badge/Require-XCode8-lightgrey.svg?style=flat-square)
 
 
 # iOS 9 - New API - 3D Touch - UIKit Peek & Pop Example
@@ -13,12 +13,17 @@ iOS 9~ Experiments - New API Components - Previewing with 3DTouch.
 
 ## Requirements
 
-- >= XCode 7.0
-- >= Swift 2.
+- >= XCode 8.0
+- >= Swift 3.
 - >= iOS 9.0.
 - >= 3D Touch Devices.
 
-Tested on iOS 9.0 Simulators iPhone 6S, 6S Plus only with forceTouchCapability Unavailable.
+Tested on iOS 9.0, iOS 10 Simulators iPhone 6S, 6S Plus , 7 only with forceTouchCapability Unavailable.
+
+
+## Important
+
+this is the Xcode 8 / Swift 3 updated project.
 
 
 ## Adopting 3D Touch on iPhone
@@ -71,4 +76,4 @@ func previewingContext(previewingContext: UIViewControllerPreviewing, commitView
 - Build and Run!
 - By pressing lightly (`Peek`) and pressing a little more firmly to actually open content (`Pop`)
 - CAUTION! : Untested on physical hardware!
-- Devices : with future iPhone 6s and others 3D Touch devices!
+- Devices : with iPhone 6s and others 3D Touch devices!

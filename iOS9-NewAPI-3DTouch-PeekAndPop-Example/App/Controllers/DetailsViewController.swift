@@ -28,21 +28,21 @@ class DetailsViewController: UIViewController {
     
     // MARK: - Preview action items.
     lazy var previewDetailsActions: [UIPreviewActionItem] = {
-        func previewActionForTitle(title: String, style: UIPreviewActionStyle = .Default) -> UIPreviewAction {
+        func previewActionForTitle(_ title: String, style: UIPreviewActionStyle = .default) -> UIPreviewAction {
             return UIPreviewAction(title: title, style: style) { previewAction, viewController in
                 guard let detailViewController = viewController as? DetailsViewController,
-                    item = detailViewController.detailTitle else { return }
+                    let item = detailViewController.detailTitle else { return }
                 
                 print("\(previewAction.title) triggered from `DetailsViewController` for item: \(item)")
             }
         }
         
         let actionDefault = previewActionForTitle("Default Action")
-        let actionDestructive = previewActionForTitle("Destructive Action", style: .Destructive)
+        let actionDestructive = previewActionForTitle("Destructive Action", style: .destructive)
         
         let subActionGoTo = previewActionForTitle("Go to coordinates")
         let subActionSave = previewActionForTitle("Save location")
-        let groupedOptionsActions = UIPreviewActionGroup(title: "Options…", style: .Default, actions: [subActionGoTo, subActionSave] )
+        let groupedOptionsActions = UIPreviewActionGroup(title: "Options…", style: .default, actions: [subActionGoTo, subActionSave] )
         
         return [actionDefault, actionDestructive, groupedOptionsActions]
     }()
@@ -71,7 +71,7 @@ typealias MapViewRendered = DetailsViewController
 extension MapViewRendered : MKMapViewDelegate {
     
     /// Layout MapView
-    func renderedMap(title:String, subtitle:String, latitude:Double, longitude:Double) {
+    func renderedMap(_ title:String, subtitle:String, latitude:Double, longitude:Double) {
         newLocation.latitude = latitude
         newLocation.longitude = longitude
         
@@ -95,7 +95,7 @@ typealias PreviewActions = DetailsViewController
 extension PreviewActions  {
     
     /// User swipes upward on a 3D Touch preview
-    override func previewActionItems() -> [UIPreviewActionItem] {
+    override var previewActionItems : [UIPreviewActionItem] {
         return previewDetailsActions
     }
 }

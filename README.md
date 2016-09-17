@@ -20,6 +20,10 @@ iOS 9~ Experiments - New API Components - Previewing with 3DTouch.
 
 Tested on iOS 9.0 Simulators iPhone 6S, 6S Plus only with forceTouchCapability Unavailable.
 
+## Important
+
+get `master` branch for Xcode 8 / Swift 3 project.
+
 
 ## Adopting 3D Touch on iPhone
 
